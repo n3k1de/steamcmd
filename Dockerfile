@@ -26,8 +26,8 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++
 RUN addgroup --gid 1000 steamcmd
 RUN adduser --gid 1000 --uid 1000 --home /home/steamcmd --disabled-password --disabled-login steamcmd
 
-COPY file:81dae9d97304f18c757f25401a3e2f4531c9bcae3c76f515736d8f082e899aaa in /home/steamcmd/run
-COPY file:c150eff0f21de316a09f05e53bc6b22e98f5f76b78ddf77ff694c93ef1ea424f in /home/steamcmd/ping
+COPY /data/run in /data/run
+# COPY /data/ping in /data/ping
 
 RUN mkdir /steamapps
 RUN chown steamcmd /steamapps /home/steamcmd
