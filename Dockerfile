@@ -41,7 +41,7 @@ RUN wget -R /data/steamcmd/ https://steamcdn-a.akamaihd.net/client/installer/ste
 RUN tar -xvzf steamcmd_linux.tar.gz
 RUN rm steamcmd_linux.tar.gz
 RUN /data/steamcmd/steamcmd.sh +login anonymous +quit
-RUN mkdir ~/.steam/sdk32 && ln -s /data/steamcmd/linux32/steamclient.so ~/.data/sdk32/steamclient.so
+RUN mkdir ~/.steam/sdk32 && ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
 VOLUME /data
 WORKDIR /data
