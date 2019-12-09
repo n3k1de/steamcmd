@@ -43,7 +43,7 @@ RUN /data/steamcmd/steamcmd.sh +login anonymous +quit
 
 RUN chown steamcmd.steamcmd /data /home/steamcmd
 USER steamcmd
-RUN mkdir ~/.steam/sdk32 && ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
+RUN mkdir /home/steamcmd/.steam/sdk32 && ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
 VOLUME [/data /home/steamcmd]
 WORKDIR /data
