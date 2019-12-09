@@ -24,14 +24,14 @@ EXPOSE 26900-26905/udp 27015-27020/tcp 27015-27020/udp
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget curl ca-certificates screen sudo
 RUN addgroup --gid 1000 steamcmd
-RUN adduser --gid 1000 --uid 1000 --home /home/steamcmd --disabled-password --disabled-login steamcmd
+RUN adduser --gid 1000 --uid 1000 --home /data/steamcmd --disabled-password --disabled-login steamcmd
 
 COPY /data/run in /data/run
 # COPY /data/ping in /data/ping
 
-RUN mkdir /steamapps
-RUN chown steamcmd /steamapps /home/steamcmd
-RUN chmod -R 0755 /steamapps /home/steamcmd
+RUN mkdir /data
+RUN chown steamcmd /data
+RUN chmod -R 0755 /data
 RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
 USER steamcmd
@@ -43,6 +43,6 @@ RUN rm steamcmd_linux.tar.gz
 RUN /home/steamcmd/steamcmd.sh +login anonymous +quit
 RUN mkdir ~/.steam/sdk32 && ln -s /home/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
-VOLUME [/steamapps /home/steamcmd]
-WORKDIR /home/steamcmd
-CMD ["/bin/sh" "-c" "/home/steamcmd/run"]
+VOLUME /data
+WORKDIR /data
+CMD ["/bin/sh" "-c" "/data/run"]
