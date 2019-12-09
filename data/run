@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ "$(stat -c %U /data)" != "mumble-server" ] ; then 
+  chown -R steamcmd.steamcmd /data
+fi; 
+rm ./start.sh
+wget -O start.sh play.djust.de/steamcmd/request/ttt/id/start
+chmod -R 0755 ./start.sh
+./start.sh
