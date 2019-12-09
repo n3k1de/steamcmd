@@ -45,6 +45,6 @@ RUN chown steamcmd.steamcmd /data /home/steamcmd
 USER steamcmd
 RUN ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
-VOLUME [/data /home/steamcmd]
+VOLUME [/data, /home/steamcmd]
 WORKDIR /data
 CMD ["/bin/sh" "-c" "/data/run"]
