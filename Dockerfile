@@ -26,8 +26,8 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++
 RUN addgroup --gid 1000 steamcmd
 RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steamcmd
 
-RUN mkdir /data /data/steamcmd
-RUN chmod -R 0755 /data
+RUN mkdir /data /data/steamcmd /home/steamcmd
+RUN chmod -R 0755 /data /home/steamcmd
 # RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
 COPY /data /data
@@ -39,11 +39,12 @@ RUN chmod -R 0755 steamcmd_linux.tar.gz
 RUN tar -xvzf steamcmd_linux.tar.gz
 RUN rm steamcmd_linux.tar.gz
 RUN /data/steamcmd/steamcmd.sh +login anonymous +quit
+
+
+RUN chown steamcmd.steamcmd /data /home/steamcmd
+USER steamcmd
 RUN mkdir ~/.steam/sdk32 && ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
-RUN chown steamcmd.steamcmd /data
-USER steamcmd
-
-VOLUME /data
+VOLUME [/data /home/steamcmd]
 WORKDIR /data
 CMD ["/bin/sh" "-c" "/data/run"]
