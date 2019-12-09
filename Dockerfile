@@ -32,7 +32,7 @@ COPY /data/run in /data/run
 RUN mkdir /data
 RUN chown steamcmd /data
 RUN chmod -R 0755 /data
-RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
+# RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
 USER steamcmd
 WORKDIR /home/steamcmd
