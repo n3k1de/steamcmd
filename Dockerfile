@@ -24,7 +24,8 @@ EXPOSE 26900-26905/udp 27015-27020/tcp 27015-27020/udp
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget curl ca-certificates screen sudo
 RUN addgroup --gid 1000 steamcmd
-RUN adduser --uid 1000 --ingroup steamcmd --disabled-password --disabled-login steamcmd # --no-create-home
+RUN adduser --uid 1000 --ingroup steamcmd --disabled-password --disabled-login steamcmd
+# --no-create-home
 
 RUN mkdir /data /data/steamcmd /home/steamcmd/.steam/sdk32
 RUN chmod -R 0755 /data /home/steamcmd
