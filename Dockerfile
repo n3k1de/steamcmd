@@ -24,7 +24,7 @@ EXPOSE 26900-26905/udp 27015-27020/tcp 27015-27020/udp
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget curl ca-certificates screen sudo
 RUN addgroup --gid 1000 steamcmd
-RUN adduser --gid 1000 --uid 1000 --home /data/steamcmd --disabled-password --disabled-login steamcmd
+RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steamcmd
 
 COPY /data/run in /data/run
 # COPY /data/ping in /data/ping
