@@ -35,7 +35,7 @@ COPY /data/run in /data/run
 # COPY /data/ping in /data/ping
 
 USER steamcmd
-WORKDIR /home/steamcmd
+WORKDIR /data
 
 RUN wget -R /home/steamcmd/ https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 RUN tar -xvzf steamcmd_linux.tar.gz
