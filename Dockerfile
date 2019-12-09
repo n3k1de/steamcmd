@@ -26,13 +26,13 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++
 RUN addgroup --gid 1000 steamcmd
 RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steamcmd
 
-COPY /data/run in /data/run
-# COPY /data/ping in /data/ping
-
 RUN mkdir /data
 RUN chown steamcmd /data
 RUN chmod -R 0755 /data
 # RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
+
+COPY /data/run in /data/run
+# COPY /data/ping in /data/ping
 
 USER steamcmd
 WORKDIR /home/steamcmd
