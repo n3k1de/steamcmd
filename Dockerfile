@@ -26,7 +26,7 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++
 RUN addgroup --gid 1000 steamcmd
 RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steamcmd
 
-RUN mkdir /data /data/steamcmd /home/steamcmd
+RUN mkdir /data /data/steamcmd /home/steamcmd/.steam/sdk32
 RUN chmod -R 0755 /data /home/steamcmd
 # RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
@@ -43,7 +43,7 @@ RUN /data/steamcmd/steamcmd.sh +login anonymous +quit
 
 RUN chown steamcmd.steamcmd /data /home/steamcmd
 USER steamcmd
-RUN mkdir /home/steamcmd/.steam/sdk32 && ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
+RUN ln -s /data/steamcmd/linux32/steamclient.so ~/.steam/sdk32/steamclient.so
 
 VOLUME [/data /home/steamcmd]
 WORKDIR /data
