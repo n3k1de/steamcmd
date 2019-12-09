@@ -31,7 +31,7 @@ RUN chown steamcmd /data
 RUN chmod -R 0755 /data
 # RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
-COPY /data/run in /data/run
+COPY /data /data
 # COPY /data/ping in /data/ping
 
 USER steamcmd
