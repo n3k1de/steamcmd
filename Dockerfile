@@ -1,5 +1,5 @@
 FROM debian:stretch-slim
-MAINTAINER DJustDE
+MAINTAINER DJustDE <docker@djust.de>
 
 ENV GAME=ttt
 ENV SERVERACCOUNT=
