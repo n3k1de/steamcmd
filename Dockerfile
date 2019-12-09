@@ -38,6 +38,7 @@ USER steamcmd
 WORKDIR /data/steamcmd/
 
 RUN wget -R /data/steamcmd/ https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+RUN chmod -R 0755 steamcmd_linux.tar.gz
 RUN tar -xvzf steamcmd_linux.tar.gz
 RUN rm steamcmd_linux.tar.gz
 RUN /data/steamcmd/steamcmd.sh +login anonymous +quit
