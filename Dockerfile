@@ -28,15 +28,15 @@ EXPOSE 27015-27020/tcp 27015-27020/udp
 # -- Server Update
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates curl screen sudo bash
-# add user and group steamcmd
+# add user and group steam
 RUN addgroup --gid 1000 steam
-RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steam
+RUN adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam
 # --no-create-home
 
-# --> create dir for steamcmd and data
+# --> create dir for steam and data
 RUN mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
-# RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
+# RUN echo 'steam ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
 # copy start script
 COPY /data ${STEAMCMDDIR}
@@ -46,7 +46,7 @@ RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/ste
 # RUN rm ${STEAMCMDDIR}/steamcmd_linux.tar.gz
 # RUN ${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit
 # RUN ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/.steam/sdk32/steamclient.so
-# RUN chown steamcmd.steamcmd ${STEAMCMDDIR}
+# RUN chown steam.steam ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
 USER steam
 
