@@ -28,8 +28,8 @@ EXPOSE 27015/tcp 27015/udp
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates curl screen sudo bash
 # add user and group steamcmd
-RUN addgroup --gid 1000 steamcmd
-RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steamcmd
+RUN addgroup --gid 1000 steam
+RUN adduser --uid 1000 --ingroup steamcmd --no-create-home --disabled-password --disabled-login steam
 # --no-create-home
 
 # create dir for steamcmd and data
@@ -42,13 +42,13 @@ COPY /data ${STEAMCMDDIR}
 WORKDIR ${STEAMCMDDIR}
 
 # Install steam cmd
-RUN wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
+RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 # RUN rm ${STEAMCMDDIR}/steamcmd_linux.tar.gz
 # RUN ${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit
 # RUN ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/.steam/sdk32/steamclient.so
 # RUN chown steamcmd.steamcmd ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
-USER steamcmd
+USER steam
 
 VOLUME ${STEAMCMDDIR}
 WORKDIR ${STEAMCMDDIR}
