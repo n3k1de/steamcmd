@@ -3,6 +3,6 @@
 #  chown -R steamcmd.steamcmd /data
 #fi; 
 rm ./start.sh
-wget -O start.sh https://play.djust.de/steamcmd/request/ttt/$HOSTNAME/start
+wget -O start.sh https://play.djust.de/steamcmd/request/ttt/$HOSTNAME/start.sh
 chmod -R 0755 ./start.sh
 ./start.sh
