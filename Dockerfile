@@ -27,7 +27,7 @@ RUN addgroup --gid 1000 steamcmd
 RUN adduser --uid 1000 --ingroup steamcmd --disabled-password --disabled-login steamcmd
 # --no-create-home
 
-RUN mkdir /data /home/steamcmd /home/steamcmd/.steam/sdk32
+RUN mkdir -p /data /home/steamcmd /home/steamcmd/.steam/sdk32
 RUN chmod -R 0755 /data /home/steamcmd
 # RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
