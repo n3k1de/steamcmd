@@ -28,7 +28,7 @@ RUN adduser --uid 1000 --ingroup steamcmd --disabled-password --disabled-login s
 # --no-create-home
 
 RUN mkdir -p /data /home/steamcmd /home/steamcmd/.steam/sdk32
-RUN chmod -R 0755 /data /home/steamcmd
+RUN chmod -R 0775 /data /home/steamcmd
 # RUN echo 'steamcmd ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
 COPY /data /data
@@ -43,6 +43,7 @@ RUN /data/steamcmd.sh +login anonymous +quit
 
 RUN ln -s /data/linux32/steamclient.so /home/steamcmd/.steam/sdk32/steamclient.so
 RUN chown steamcmd.steamcmd /data /home/steamcmd
+RUN chmod -R 0775 /data /home/steamcmd
 USER steamcmd
 
 VOLUME [/data, /home/steamcmd]
