@@ -40,6 +40,7 @@ RUN mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR}
 
 # copy start script
 COPY /data ${STEAMCMDDIR}
+VOLUME ${STEAMCMDDIR}
 
 # --> Install steam cmd
 RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
@@ -50,5 +51,4 @@ RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/ste
 # RUN chmod -R 0775 ${STEAMCMDDIR}
 USER steam
 
-VOLUME ${STEAMCMDDIR}
 ENTRYPOINT ["${STEAMCMDDIR}/entrypoint"]
