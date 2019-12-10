@@ -31,10 +31,11 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++
 # add user and group steam
 RUN addgroup --gid 1000 steam
 RUN adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam
+RUN su steam -c "mkdir -p ${STEAMCMDDIR}"
 # --no-create-home
 
 # --> create dir for steam and data
-RUN mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR}
+# RUN mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
 # RUN echo 'steam ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 
