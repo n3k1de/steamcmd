@@ -48,4 +48,4 @@ USER steamcmd
 
 VOLUME [/data, /home/steamcmd]
 WORKDIR /data
-ENTRYPOINT ["/data/run"]
+ENTRYPOINT ["/data/entrypoint"]
