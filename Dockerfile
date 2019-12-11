@@ -51,6 +51,6 @@ RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/ste
 #    su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit" && \
 #    ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMDIR}/.steam/sdk32/steamclient.so && \
 
-COPY /data ${STEAMCMDDIR}
-VOLUME ${STEAMCMDDIR} ${SERVERDIR}
-ENTRYPOINT ["${STEAMCMDDIR}/entrypoint"]
+COPY /data /home/steam/steamcmd
+VOLUME [/home/steam/steamcmd /home/steam/server]
+ENTRYPOINT ["/home/steam/steamcmd/entrypoint"]
