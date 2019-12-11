@@ -25,32 +25,30 @@ EXPOSE 27015-27020/tcp 27015-27020/udp
 # RUN echo "* hard nofile 1000000" >> /etc/security/limits.conf
 # RUN echo "session required pam_limits.so" >> /etc/pam.d/common-session
 
-# -- Server Update
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates curl screen sudo bash
-# add user and group steam
-RUN addgroup --gid 1000 steam
-RUN adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam
+# ---- >> Server Update
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates curl screen sudo bash
+# ---- >> add user, group steam and add home dir
+RUN addgroup --gid 1000 steam && \
+    adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
+    mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR} && \
+    chmod -R 0775 ${STEAMCMDDIR} && \
+    chown steam.steam ${STEAMCMDDIR}
 # RUN echo 'steam ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
-# --no-create-home
 
-# --> create dir for steam and data
-RUN mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR}
-RUN chmod -R 0775 ${STEAMCMDDIR}
-RUN chown steam.steam ${STEAMCMDDIR}
-
-# copy start script
+# ---- >> copy start script
 COPY /data ${STEAMCMDDIR}
 WORKDIR ${STEAMCMDDIR}
 
-# --> Install steam cmd
+# ---- >> Install steam cmd
 RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 # RUN rm ${STEAMCMDDIR}/steamcmd_linux.tar.gz
 # RUN ${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit
 # RUN ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/.steam/sdk32/steamclient.so
 # RUN chown steam.steam ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
-USER steam
 
+USER steam
 VOLUME ${STEAMCMDDIR}
 ENTRYPOINT ["${STEAMCMDDIR}/entrypoint"]
