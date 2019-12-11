@@ -36,8 +36,9 @@ RUN apt-get update && \
 # ---- >> add user, group steam and add home dir
 RUN addgroup --gid 1000 steam && \
     adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
-    mkdir -p ${STEAMCMDDIR} ${SERVERDIR} && cd ${STEAMCMDDIR} && \
-    chmod -R 0775 ${STEAMCMDDIR} ${SERVERDIR} && \
+    mkdir -p ${STEAMCMDDIR} ${SERVERDIR} && cd ${STEAMCMDDIR}
+COPY /data ${STEAMCMDDIR}
+RUN chmod -R 0775 ${STEAMCMDDIR} ${SERVERDIR} && \
     chown steam.steam ${STEAMCMDDIR} ${SERVERDIR}
 # RUN echo 'steam ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
 # ${STEAMCMDDIR} /.steam/sdk32
@@ -51,6 +52,5 @@ RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/ste
 #    su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit" && \
 #    ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMDIR}/.steam/sdk32/steamclient.so && \
 
-COPY /data /home/steam/steamcmd
 VOLUME [/home/steam/steamcmd /home/steam/server]
 ENTRYPOINT ["/home/steam/steamcmd/entrypoint"]
