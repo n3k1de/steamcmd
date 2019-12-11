@@ -4,19 +4,22 @@ MAINTAINER DJustDE <docker@djust.de>
 ENV GAME ttt
 ENV STEAMCMDDIR /home/steam/steamcmd
 
-ENV PORT 27015
-ENV MAXPLAYERS 12
+ENV PORT=27015
+ENV PORTTV=27020
+ENV CLIENTPORT=27005
+ENV SPORT=26900
+ENV MAXPLAYERS=12
 ENV GAMEMODE terrortown
-ENV MAP gm_construct
-ENV SERVERNAME __placeholder__
-ENV PASSWD __placeholder__
-ENV RCONPASSWD __placeholder__
-ENV WORKSHOPCOLLECTION __placeholder__
-ENV APIKEY __placeholder__
-ENV SERVERACCOUNT __placeholder__
+ENV MAP=gm_construct
+ENV SERVERNAME=
+ENV PASSWD=
+ENV RCONPASSWD=
+ENV WORKSHOPCOLLECTION=
+ENV APIKEY=
+ENV SERVERACCOUNT=
 
-# --> Dedicated or Listen Servers(Steam) (27015/tcp=Rcon; 27015/udp=gameplay)
-EXPOSE 27015-27020/tcp 27015-27020/udp
+# --> 27015/tcp=Rcon; 27015/udp=information; 27005/udp=client; 27020/udp=SourceTV; 26900/udp=steam
+EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp
 
 # --> only ARK server
 # EXPOSE 7777-7778/tcp 7777-7778/udp
@@ -43,7 +46,6 @@ WORKDIR ${STEAMCMDDIR}
 
 # ---- >> Install steam cmd
 RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -" && \
-    rm ${STEAMCMDDIR}/steamcmd_linux.tar.gz && \
     su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit"
 # RUN ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/.steam/sdk32/steamclient.so
 # RUN chown steam.steam ${STEAMCMDDIR}
