@@ -35,12 +35,12 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates wget
 # ---- >> add user, group steam and add home dir
 RUN addgroup --gid 1000 steam && \
-    adduser --uid 1000 --ingroup steam --disabled-password --disabled-login steam && \
-    mkdir -p ${STEAMDIR}/.steam/sdk32 && cd ${STEAMCMDDIR} && \
+    adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
+    mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR} && \
     chmod -R 0775 ${STEAMCMDDIR} && \
     chown steam.steam ${STEAMCMDDIR}
 # RUN echo 'steam ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
-# --no-create-home ${STEAMCMDDIR}
+# ${STEAMCMDDIR} /.steam/sdk32
 
 # ---- >> copy start script
 COPY /data ${STEAMDIR}
@@ -48,10 +48,10 @@ COPY /data ${STEAMDIR}
 # ---- >> Install steam cmd
 WORKDIR ${STEAMCMDDIR}
 RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -" && \
-    su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit" && \
-    ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMDIR}/.steam/sdk32/steamclient.so
+    su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit"
+#    ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMDIR}/.steam/sdk32/steamclient.so && \
 
-WORKDIR ${STEAMDIR}
-USER steam
+WORKDIR ${STEAMCMDDIR}
+# USER steam
 VOLUME ${STEAMCMDDIR}
-ENTRYPOINT ["${STEAMDIR}/entrypoint"]
+ENTRYPOINT ["${STEAMCMDDIR}/entrypoint"]
