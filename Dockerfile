@@ -34,7 +34,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates curl screen sudo bash
 # ---- >> add user, group steam and add home dir
 RUN addgroup --gid 1000 steam && \
-    adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
+    adduser --uid 1000 --ingroup steam --disabled-password --disabled-login steam && \
     mkdir -p ${STEAMCMDDIR}/.steam/sdk32 && cd ${STEAMCMDDIR} && \
     chmod -R 0775 ${STEAMCMDDIR} && \
     chown steam.steam ${STEAMCMDDIR}
