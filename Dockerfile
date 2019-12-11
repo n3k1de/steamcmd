@@ -20,10 +20,10 @@ EXPOSE 27015-27020/tcp 27015-27020/udp
 
 # --> only ARK server
 # EXPOSE 7777-7778/tcp 7777-7778/udp
-# RUN echo "fs.file-max=100000" >> /etc/sysctl.conf
-# RUN echo "* soft nofile 1000000" >> /etc/security/limits.conf
-# RUN echo "* hard nofile 1000000" >> /etc/security/limits.conf
-# RUN echo "session required pam_limits.so" >> /etc/pam.d/common-session
+# RUN echo "fs.file-max=100000" >> /etc/sysctl.conf && /
+#    echo "* soft nofile 1000000" >> /etc/security/limits.conf && /
+#    echo "* hard nofile 1000000" >> /etc/security/limits.conf && /
+#    echo "session required pam_limits.so" >> /etc/pam.d/common-session
 
 # ---- >> Server Update
 RUN apt-get update && \
