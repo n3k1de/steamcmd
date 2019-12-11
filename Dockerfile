@@ -47,9 +47,9 @@ WORKDIR ${STEAMCMDDIR}
 
 # ---- >> Install steam cmd
 RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -" && \
-    su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit"
-#    ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/.steam/sdk32/steamclient.so
-# RUN chown steam.steam ${STEAMCMDDIR} && \
+    su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit" && \
+    ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/.steam/sdk32/steamclient.so
+# RUN chown steam.steam ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
 
 RUN ls ${STEAMCMDDIR}
