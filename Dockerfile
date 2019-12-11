@@ -51,6 +51,8 @@ RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/ste
 # RUN chown steam.steam ${STEAMCMDDIR}
 # RUN chmod -R 0775 ${STEAMCMDDIR}
 
+RUN ls ${STEAMCMDDIR}
+
 USER steam
 VOLUME ${STEAMCMDDIR}
 ENTRYPOINT ["${STEAMCMDDIR}/entrypoint"]
