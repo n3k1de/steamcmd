@@ -31,7 +31,7 @@ EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp 51840/udp
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates wget && \
+    apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates && \
     addgroup --gid 1000 steam && \
     adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
     mkdir -p ${STEAMCMDDIR} ${SERVERDIR} && cd ${STEAMCMDDIR}
