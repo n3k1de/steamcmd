@@ -2,7 +2,7 @@ FROM debian:buster-slim
 MAINTAINER DJustDE <docker@djust.de>
 
 ENV GAME ttt
-ENV STEAMDIR /home/steam
+ENV SERVERDIR /home/steam/server
 ENV STEAMCMDDIR /home/steam/steamcmd
 
 ENV PORT=27015
@@ -53,5 +53,5 @@ RUN su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/ste
 
 WORKDIR ${STEAMCMDDIR}
 # USER steam
-VOLUME ${STEAMCMDDIR}
+VOLUME ${STEAMCMDDIR} ${SERVERDIR}
 ENTRYPOINT ["${STEAMCMDDIR}/entrypoint"]
