@@ -2,7 +2,7 @@ FROM debian:buster-slim
 MAINTAINER DJustDE <docker@djust.de>
 
 ENV GAME ttt
-ENV STEAMCMDDIR /home/steam/steamcmd
+ENV STEAMCMDDIR /home/steam/steam
 
 ENV PORT=27015
 ENV PORTTV=27020
