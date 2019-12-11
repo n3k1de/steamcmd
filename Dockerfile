@@ -35,10 +35,11 @@ RUN apt-get update && \
 # ---- >> add user, group steam and add home dir
 RUN addgroup --gid 1000 steam && \
     adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
-    mkdir -p ${STEAMCMDDIR} && cd ${STEAMCMDDIR} && \
+    mkdir -p ${STEAMCMDDIR}/.steam/sdk32 && cd ${STEAMCMDDIR} && \
     chmod -R 0775 ${STEAMCMDDIR} && \
     chown steam.steam ${STEAMCMDDIR}
 # RUN echo 'steam ALL=(ALL) NOPASSWD: ALL' >> '/etc/sudoers'
+# --no-create-home ${STEAMCMDDIR}
 
 # ---- >> copy start script
 COPY /data ${STEAMCMDDIR}
