@@ -42,4 +42,4 @@ RUN chmod -R 0775 ${STEAMCMDDIR} ${SERVERDIR} && \
     su steam -c "wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 
 VOLUME [/home/steam/steamcmd /home/steam/server]
-ENTRYPOINT ["/home/steam/steamcmd/entrypoint"]
+ENTRYPOINT ["/home/steam/steamcmd/entrypoint.sh"]
