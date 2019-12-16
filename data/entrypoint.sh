@@ -1,4 +1,5 @@
 #!/bin/bash
+ulimit -n 2048
 cd ${STEAMCMDDIR}
 if [ "$(stat -c %U ${STEAMCMDDIR})" != "steam" ] ; then 
   chown -R steam.steam ${STEAMCMDDIR}
