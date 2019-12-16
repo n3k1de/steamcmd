@@ -21,12 +21,12 @@ ENV SERVERACCOUNT=
 
 # --> 27015/tcp=Rcon; 27015/udp=information; 27005/udp=client; 27020/udp=SourceTV; 26900/udp=steam
 EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp 51840/udp
-
+# --no-create-home
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates && \
     addgroup --gid 1000 steam && \
-    adduser --uid 1000 --ingroup steam --no-create-home --disabled-password --disabled-login steam && \
+    adduser --uid 1000 --ingroup steam --disabled-password --disabled-login steam && \
     su steam -c "mkdir -p ${STEAMCMDDIR} ${SERVERDIR} && \
         cd ${STEAMCMDDIR} && \
         wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
