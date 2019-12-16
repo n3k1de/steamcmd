@@ -1,7 +1,11 @@
 #!/bin/bash
-ulimit -n 2048
+
 # update
-${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 +validate +force_install_dir "${SERVERDIR}/css" +app_update 232330 +validate +force_install_dir "${SERVERDIR}/tf2" +app_update 232250 +validate +quit
+${STEAMCMDDIR}/steamcmd.sh +login anonymous \
+ +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 validate \
+ +force_install_dir "${SERVERDIR}/css" +app_update 232330 +validate \
+ +force_install_dir "${SERVERDIR}/tf2" +app_update 232250 +validate \
+ +quit
 # ln -s ${SERVERDIR}/linux32/steamclient.so ${SERVERDIR}/.steam/sdk32/steamclient.so
 
 
