@@ -1,5 +1,5 @@
 #!/bin/bash
-ls ./
+
 # update
 ${STEAMCMDDIR}/steamcmd.sh +login anonymous \
  +force_install_dir "/home/steam/server/gmod/" +app_update 4020 validate \
