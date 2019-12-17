@@ -27,15 +27,15 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates && \
     addgroup --gid 1000 steam && \
     adduser --uid 1000 --ingroup steam --disabled-password --disabled-login steam && \
-    su steam -c "mkdir -p ${STEAMCMDDIR}/run ${SERVERDIR} && \
+    su steam -c "mkdir -p ${STEAMCMDDIR} ${SERVERDIR} && \
         cd ${STEAMCMDDIR} && \
         wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 
 
 WORKDIR ${STEAMCMDDIR}
-COPY /data ${STEAMCMDDIR}/run
+COPY /data/entrypoint.sh /home/steam/entrypoint.sh
 # RUN chmod -R 0775 ${STEAMCMDDIR} ${SERVERDIR} && steam.steam ${STEAMCMDDIR} ${SERVERDIR}
-RUN chmod -R 0775 ${STEAMCMDDIR}/run && steam.steam ${STEAMCMDDIR}/run
+RUN chmod -R 0775 /home/steam/entrypoint.sh && steam.steam /home/steam/entrypoint.sh
 
 VOLUME [/home/steam/steamcmd /home/steam/server]
-ENTRYPOINT ["/home/steam/steamcmd/run/entrypoint.sh"]
+ENTRYPOINT ["/home/steam/entrypoint.sh"]
