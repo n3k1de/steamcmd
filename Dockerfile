@@ -33,7 +33,6 @@ RUN apt-get update && \
 
 WORKDIR ${STEAMCMDDIR}
 COPY /data/ /home/steam/
-RUN ls /home/steam/
 RUN chmod 0775 /home/steam/entrypoint.sh && chown steam.steam /home/steam/entrypoint.sh
 
 VOLUME [/home/steam/steamcmd /home/steam/server]
