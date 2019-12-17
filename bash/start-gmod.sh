@@ -2,9 +2,9 @@
 ls ./
 # update
 ${STEAMCMDDIR}/steamcmd.sh +login anonymous \
- +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 validate \
- +force_install_dir "${SERVERDIR}/css" +app_update 232330 validate \
- +force_install_dir "${SERVERDIR}/tf2" +app_update 232250 validate \
+ +force_install_dir "/home/steam/server/gmod/" +app_update 4020 validate \
+ +force_install_dir "/home/steam/server/css" +app_update 232330 validate \
+ +force_install_dir "/home/steam/server/tf2" +app_update 232250 validate \
  +quit
 # ln -s ${SERVERDIR}/linux32/steamclient.so ${SERVERDIR}/.steam/sdk32/steamclient.so
 
