@@ -35,5 +35,5 @@ WORKDIR ${STEAMCMDDIR}
 COPY /data/ /home/steam/
 RUN chmod 0775 /home/steam/entrypoint.sh && chown steam.steam /home/steam/entrypoint.sh
 
-VOLUME [/home/steam/steamcmd /home/steam/server]
+VOLUME ["/home/steam/steamcmd", "/home/steam/server"]
 ENTRYPOINT ["/home/steam/entrypoint.sh"]
