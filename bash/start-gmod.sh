@@ -11,4 +11,4 @@ ${STEAMCMDDIR}/steamcmd.sh +login anonymous \
 # server start
 cd ${SERVERDIR}/gmod/
 ls
-$./srcds_run -game garrysmod -secure +sv_setsteamaccount ${SERVERACCOUNT} -authkey ${APIKEY} +host_workshop_collection ${WORKSHOPCOLLECTION} -port ${PORT} +tv_port ${PORTTV} -clientport ${CLIENTPORT} -sport ${SPORT} +maxplayers ${MAXPLAYERS} +gamemode ${GAMEMODE} +map ${MAP} -tickrate 66 -exec server.cfg
+./srcds_run -game garrysmod -secure +sv_setsteamaccount ${SERVERACCOUNT} -authkey ${APIKEY} +host_workshop_collection ${WORKSHOPCOLLECTION} -port ${PORT} +tv_port ${PORTTV} -clientport ${CLIENTPORT} -sport ${SPORT} +maxplayers ${MAXPLAYERS} +gamemode ${GAMEMODE} +map ${MAP} -tickrate 66 -exec server.cfg
