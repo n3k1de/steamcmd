@@ -31,10 +31,8 @@ RUN apt-get update && \
         cd ${STEAMCMDDIR} && \
         wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 
-
 WORKDIR ${STEAMCMDDIR}
 COPY /data/entrypoint.sh /home/steam/entrypoint.sh
-# RUN chmod -R 0775 ${STEAMCMDDIR} ${SERVERDIR} && steam.steam ${STEAMCMDDIR} ${SERVERDIR}
 RUN chmod -R 0775 /home/steam/entrypoint.sh && steam.steam /home/steam/entrypoint.sh
 
 VOLUME [/home/steam/steamcmd /home/steam/server]
