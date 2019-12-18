@@ -27,7 +27,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6 lib32gcc1 wget ca-certificates && \
     addgroup --gid 27015 steam && \
     adduser --uid 27015 --ingroup steam --disabled-password --disabled-login steam && \
-    su steam -c "mkdir -p ${STEAMCMDDIR} ${SERVERDIR} && \
+    su steam -c "mkdir -p ${STEAMCMDDIR} ${SERVERDIR} /home/steam/.steam/sdk32/ && \
         cd ${STEAMCMDDIR} && \
         wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 
