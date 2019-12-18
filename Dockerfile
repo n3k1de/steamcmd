@@ -31,7 +31,8 @@ RUN dpkg --add-architecture i386 && \
     chmod 0775 /opt/ && chown steam.steam /opt/ && \
     su steam -c "mkdir -p ${STEAMCMDDIR} ${SERVERDIR} /home/steam/.steam/sdk32/ && \
         cd ${STEAMCMDDIR} && \
-        wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
+        wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -" && \
+    ulimit -n 2048
 
 ENV LANG en_US.utf8
 WORKDIR ${STEAMCMDDIR}
