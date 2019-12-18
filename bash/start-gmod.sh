@@ -3,11 +3,11 @@
 # update
 ${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit
 ${STEAMCMDDIR}/steamcmd.sh +login anonymous \
- +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 validate \
+ +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 -validate \
  +quit
 
-# +force_install_dir "${SERVERDIR}/css" +app_update 232330 validate \
-# +force_install_dir "${SERVERDIR}/tf2" +app_update 232250 validate \
+# +force_install_dir "${SERVERDIR}/css" +app_update 232330 -validate \
+# +force_install_dir "${SERVERDIR}/tf2" +app_update 232250 -validate \
 
 # server start
 cd ${SERVERDIR}/gmod/
