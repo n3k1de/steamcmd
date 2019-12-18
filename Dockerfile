@@ -36,11 +36,11 @@ RUN dpkg --add-architecture i386 && \
 
 ENV LANG en_US.utf8
 WORKDIR ${STEAMCMDDIR}
+VOLUME ${STEAMCMDDIR}
 # COPY /data/ /opt/
 # RUN chmod 0775 /opt/entrypoint.sh && chown steam.steam /opt/entrypoint.sh && \
 #     su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit"
 # 
 # USER steam
-VOLUME "${STEAMCMDDIR}"
 # VOLUME ["${STEAMCMDDIR}", "${SERVERDIR}"]
 # ENTRYPOINT ["/opt/entrypoint.sh"]
