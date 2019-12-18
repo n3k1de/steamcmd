@@ -20,7 +20,7 @@ ENV APIKEY=
 ENV SERVERACCOUNT=
 
 # --> 27015/tcp=Rcon; 27015/udp=information; 27005/udp=client; 27020/udp=SourceTV; 26900/udp=steam
-EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp 51840/udp
+EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp 51840/udp 80/tcp 443/tcp
 # --no-create-home
 RUN apt-get update && \
     apt-get upgrade -y && \
