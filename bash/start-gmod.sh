@@ -13,4 +13,5 @@ ${STEAMCMDDIR}/steamcmd.sh +login anonymous \
 # server start
 cd ${SERVERDIR}/gmod/
 # ./srcds_run -condebug -game garrysmod -secure +sv_lan 0 +sv_setsteamaccount ${SERVERACCOUNT} -authkey ${APIKEY} +host_workshop_collection ${WORKSHOPCOLLECTION} +port ${PORT} +tv_port ${PORTTV} +clientport ${CLIENTPORT} +maxplayers ${MAXPLAYERS} +gamemode ${GAMEMODE} +map ${MAP} -tickrate 66 -exec server.cfg
-./srcds_run -game garrysmod -ip 0.0.0.0 +sv_setsteamaccount ${SERVERACCOUNT} +maxplayers ${MAXPLAYERS} +gamemode ${GAMEMODE} +map ${MAP}
+# ./srcds_run -game garrysmod -ip 0.0.0.0 +sv_setsteamaccount ${SERVERACCOUNT} +maxplayers ${MAXPLAYERS} +gamemode ${GAMEMODE} +map ${MAP}
+./srcds_run -game garrysmod +maxplayers 32 +map gm_construct
