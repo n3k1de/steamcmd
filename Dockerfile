@@ -23,7 +23,6 @@ ENV SERVERACCOUNT=
 EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp 51840/udp 80/tcp 443/tcp
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
     apt-get install -y --no-install-recommends --no-install-suggests lib32stdc++6=8.3.0-6 lib32gcc1=1:8.3.0-6 wget ca-certificates && \
     addgroup --gid 27015 steam && \
     adduser --uid 27015 --ingroup steam --disabled-password --disabled-login steam && \
