@@ -23,6 +23,7 @@ ENV SERVERACCOUNT=
 EXPOSE 27015/tcp 27015/udp 27005/udp 27020/udp 26900/udp 51840/udp 80/tcp 443/tcp
 
 RUN apt-get update && \
+    dpkg --add-architecture i386 && \
     apt-get install -y --no-install-recommends --no-install-suggests locales lib32stdc++6 lib32gcc1 wget ca-certificates && \
     rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     addgroup --gid 27015 steam && \
