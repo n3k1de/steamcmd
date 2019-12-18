@@ -41,5 +41,6 @@ WORKDIR ${STEAMCMDDIR}
 #     su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit"
 # 
 # USER steam
+VOLUME "${STEAMCMDDIR}"
 # VOLUME ["${STEAMCMDDIR}", "${SERVERDIR}"]
 # ENTRYPOINT ["/opt/entrypoint.sh"]
