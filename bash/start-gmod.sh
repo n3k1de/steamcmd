@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ln -s ${STEAMCMDDIR}/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
 # update
 ${STEAMCMDDIR}/steamcmd.sh +login anonymous +quit
 ${STEAMCMDDIR}/steamcmd.sh +login anonymous \
