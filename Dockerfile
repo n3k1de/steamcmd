@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:8-slim
 MAINTAINER DJustDE <docker@djust.de>
 
 ENV GAME ttt
