@@ -2,8 +2,8 @@ FROM debian:stretch-slim
 MAINTAINER DJustDE <docker@djust.de>
 
 ENV GAME ttt
-ENV SERVERDIR /home/steam/server
-ENV STEAMCMDDIR /home/steam/steamcmd
+ENV SERVERDIR /opt/server
+ENV STEAMCMDDIR /home/steam
 
 ENV PORT=27015
 ENV PORTTV=27020
@@ -32,9 +32,9 @@ RUN apt-get update && \
         wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
 
 WORKDIR ${STEAMCMDDIR}
-COPY /data/ /home/steam/
-RUN chmod 0775 /home/steam/entrypoint.sh && chown steam.steam /home/steam/entrypoint.sh
+COPY /data/ /opt/
+RUN chmod 0775 /opt/entrypoint.sh && chown steam.steam /opt/entrypoint.sh
 
 USER steam
-VOLUME ["/home/steam/steamcmd", "/home/steam/server"]
-ENTRYPOINT ["/home/steam/entrypoint.sh"]
+VOLUME ["${STEAMCMDDIR}", "${SERVERDIR}"]
+ENTRYPOINT ["/opt/entrypoint.sh"]
