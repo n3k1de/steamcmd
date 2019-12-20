@@ -1,4 +1,5 @@
-FROM i386/ubuntu:18.04
+# FROM i386/ubuntu:18.04
+FROM i386/debian:9-slim
 MAINTAINER DJustDE <docker@djust.de>
 
 # ENV GAME ttt
