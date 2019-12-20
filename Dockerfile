@@ -1,4 +1,4 @@
-FROM debian:8-slim
+FROM debian:9-slim
 MAINTAINER DJustDE <docker@djust.de>
 
 # ENV GAME ttt
