@@ -7,7 +7,7 @@ ${STEAMCMDDIR}/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous \
 +quit
 
 # server start
-cd ${SERVERDIR}/gmod/
+cd ${SERVERDIR}/csgo/
 ./srcds_run \
 -game csgo \
 -console -nobreakpad -usercon -secure -debug \
