@@ -23,7 +23,7 @@ echo "	\"cstrike\"		\"1\"" >> "${SERVERDIR}/gmod/garrysmod/cfg/mountdepots.txt"
 echo "}" >> "${SERVERDIR}/gmod/garrysmod/cfg/mountdepots.txt"
 
 # edit server.cfg
-echo "hostname \"${SERVERNAME}\"" > "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
+echo "hostname \"${HOSTNAME}\"" > "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
 echo "sv_password \"${PASSWD}\"" >> "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
 echo "rcon_password \"${RCONPASSWD}\"" >> "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
 echo "sv_region 3" >> "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
