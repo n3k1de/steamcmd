@@ -25,7 +25,7 @@ ENV STEAMCMDDIR /home/steam
 
 # RUN dpkg --add-architecture i386 && \
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 lib32gcc1 wget curl ca-certificates && \
+    apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 lib32gcc1 wget curl ca-certificates gdb && \
     rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     addgroup --gid 27015 steam && \
     adduser --uid 27015 --ingroup steam --disabled-password --disabled-login --gecos "" steam && \
