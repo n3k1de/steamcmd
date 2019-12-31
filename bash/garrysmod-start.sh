@@ -54,6 +54,7 @@ cd ${SERVERDIR}/gmod/
 +sv_setsteamaccount ${SERVERACCOUNT} \
 +gamemode ${GAMEMODE} \
 +sv_password ${PASSWD} \
++rcon_password ${RCONPASSWD} \
 +hostname ${HOSTNAME} \
 +host_workshop_collection ${WORKSHOPCOLLECTION} \
 -net_port_try 1 \
