@@ -3,9 +3,9 @@
 # update
 if [ -e "/home/steam/.steam/sdk32/steamclient.so" ]
 then
-	echo "steamclient.so found."
+  echo "steamclient.so found."
 else
-	echo "steamclient.so not found."
+  echo "steamclient.so not found."
   ln -s ${STEAMCMDDIR}/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
 fi
 
