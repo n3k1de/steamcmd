@@ -1,14 +1,6 @@
 #!/bin/sh
 
 # update
-if [ -e "/home/steam/.steam/sdk32/steamclient.so" ]
-then
-  echo "steamclient.so found."
-else
-  echo "steamclient.so not found."
-  ln -s ${STEAMCMDDIR}/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
-fi
-
 ${STEAMCMDDIR}/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous \
 +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 validate \
 +force_install_dir "${SERVERDIR}/css" +app_update 232330 validate \
