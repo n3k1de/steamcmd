@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# updat
+# update
 rm /home/steam/.steam/sdk32/steamclient.so
 ln -s ${STEAMCMDDIR}/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
 ${STEAMCMDDIR}/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous \
