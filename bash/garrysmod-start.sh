@@ -46,6 +46,16 @@ echo "sv_logfile 1" >> "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
 echo "sv_log_onefile 1" >> "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
 echo "lua_log_sv 1" >> "${SERVERDIR}/gmod/garrysmod/cfg/server.cfg"
 
+# edit mountdepots.txt
+echo "\"Users\"" > "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "{" >> "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "	\"tf\"			\"1\"" >> "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "	\"superadmin\"" > "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "	{" >> "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "		\"xWilliam\"" >> "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "	}" >> "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+echo "}" >> "${SERVERDIR}/gmod/garrysmod/settings/users.txt"
+
 # server start
 cd ${SERVERDIR}/gmod/
 ./srcds_run \
