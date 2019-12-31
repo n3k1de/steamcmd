@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# update
+# updat
+rm /home/steam/.steam/sdk32/steamclient.so
 ln -s ${STEAMCMDDIR}/linux32/steamclient.so /home/steam/.steam/sdk32/steamclient.so
 ${STEAMCMDDIR}/steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous \
 +force_install_dir "${SERVERDIR}/gmod/" +app_update 4020 validate \
