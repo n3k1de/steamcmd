@@ -1,5 +1,7 @@
 # steamcmd
 
+* `debian-stretch`, `debian-`
+
 please use the following repositories:
 
 * [Garry's mod](https://hub.docker.com/r/djustde/steamcmd-gmod)
