@@ -24,6 +24,6 @@
 * [Squad](https://hub.docker.com/r/NetherKids/squad)
 * [Killing Floor 2](https://hub.docker.com/r/NetherKids/kf2)
 * [DayZ](https://hub.docker.com/r/NetherKids/dayz)
-* [Left 4 Dead 2](https://hub.docker.com/r/NetherKids/left4dead2)Starbound
+* [Left 4 Dead 2](https://hub.docker.com/r/NetherKids/left4dead2)
 * [No More Room in Hell](https://hub.docker.com/r/NetherKids/nomoreroominhell)
 * [Starbound](https://hub.docker.com/r/NetherKids/starbound)
