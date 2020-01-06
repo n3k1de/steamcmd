@@ -1,5 +1,5 @@
 FROM debian:stretch-slim
-MAINTAINER DJustDE <docker@djust.de>
+MAINTAINER NetherKids <git@netherkids.de>
 
 ENV STEAMCMDDIR=/home/steam \
     LANG=en_US.utf8
