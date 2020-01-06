@@ -1,6 +1,5 @@
-# FROM i386/ubuntu:18.04
 FROM debian:9-slim
-MAINTAINER DJustDE <docker@djust.de>
+MAINTAINER NetherKidsDE <git@netherkids.de>
 
 ENV STEAMCMDDIR=/home/steam \
     LANG=en_US.utf8
