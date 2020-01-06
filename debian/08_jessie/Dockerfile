@@ -1,5 +1,5 @@
 FROM debian:jessie-slim
-MAINTAINER DJustDE <docker@djust.de>
+MAINTAINER NetherKidsDE <git@netherkids.de>
 
 ENV STEAMCMDDIR=/home/steam \
     LANG=en_US.utf8
