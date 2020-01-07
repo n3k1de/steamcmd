@@ -20,7 +20,7 @@
 #### ArchLinux
 * planned...
 
-## repositorys 
+## Supported games 
 - [x] [Garry's Mod](https://hub.docker.com/r/netherkids/gmod)
 - [ ] [Counter-Strike: Source](https://hub.docker.com/r/netherkids/css)
 - [ ] [Counter-Strike: Global Offensive](https://hub.docker.com/r/netherkids/csgo)
