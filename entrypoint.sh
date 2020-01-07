@@ -19,12 +19,12 @@ fi
 ${STEAMCMDDIR}/steamcmd.sh \
   +login anonymous \
   +force_install_dir ${SERVERDIR} \
-  +app_update ${GAMEID} validate \
+  +app_update ${GAME_ID} validate \
   +quit
 
 # server start
 cd ${SERVERDIR}/
 ${SERVER_DIR}/srcds_run \
 -game ${GAME_NAME} \
-+port ${PORT} \
-${GAME_PARAMS}
+${GAME_PARAMS} \
++port ${PORT}
