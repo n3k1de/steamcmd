@@ -1,8 +1,9 @@
 FROM debian:stretch-slim
 MAINTAINER NetherKids <git@netherkids.de>
 
-ENV STEAMCMDDIR=/home/steam \
-    LANG=en_US.utf8
+ENV STEAMCMDDIR="/home/steam" \
+    SERVERDIR="/opt/server" \
+    LANG="en_US.utf8"
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get upgrade -y && \
@@ -19,6 +20,9 @@ RUN dpkg --add-architecture i386 && \
     apt-get clean  && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
+COPY --chown=steam:steam /entrypoint.sh /
+
 WORKDIR ${STEAMCMDDIR}
 VOLUME ${STEAMCMDDIR}
-ENTRYPOINT ["/home/steam/steamcmd.sh"]
+
+ENTRYPOINT ["/entrypoint.sh"]
