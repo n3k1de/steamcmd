@@ -20,8 +20,6 @@ RUN dpkg --add-architecture i386 && \
     apt-get clean  && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-COPY --chown=steam:steam /entrypoint.sh /
-
 WORKDIR ${STEAMCMDDIR}
 VOLUME ${STEAMCMDDIR}
 
