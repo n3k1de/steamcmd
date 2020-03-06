@@ -1,5 +1,5 @@
 FROM debian:stretch-slim
-MAINTAINER NetherKids <git@netherkids.de>
+MAINTAINER NetherKids <docker@netherkids.de>
 
 ENV STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
@@ -22,5 +22,3 @@ RUN dpkg --add-architecture i386 && \
 
 WORKDIR ${STEAMCMDDIR}
 VOLUME ${STEAMCMDDIR}
-
-ENTRYPOINT ["/entrypoint.sh"]
