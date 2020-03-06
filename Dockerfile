@@ -1,5 +1,5 @@
 FROM debian:stretch-slim
-MAINTAINER NetherKids <git@netherkids.de>
+MAINTAINER NetherKids <docker@netherkids.de>
 
 ENV STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
