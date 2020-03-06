@@ -1,7 +1,8 @@
 FROM archlinux
 MAINTAINER NetherKids <git@netherkids.de>
 
-ENV STEAMCMDDIR=/home/steam
+ENV STEAMCMDDIR=/home/steam \
+    SERVERDIR="/opt/server"
 
 RUN addgroup --gid 27015 steam && \
     adduser --uid 27015 --ingroup steam --disabled-password --disabled-login --gecos "" steam && \
@@ -12,4 +13,3 @@ RUN addgroup --gid 27015 steam && \
 
 WORKDIR ${STEAMCMDDIR}
 VOLUME ${STEAMCMDDIR}
-ENTRYPOINT ["/home/steam/steamcmd.sh"]
