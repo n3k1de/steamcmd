@@ -9,7 +9,7 @@ COPY /healthcheck.py /
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 && \
+    apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 python3-requests && \
     rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     addgroup --gid 27015 steam && \
     adduser --uid 27015 --ingroup steam --disabled-password --disabled-login --gecos "" steam && \
