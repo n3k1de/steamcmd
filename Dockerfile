@@ -5,6 +5,8 @@ ENV STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8"
 
+COPY --chown=steam:steam /healthcheck.py /
+
 RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 && \
