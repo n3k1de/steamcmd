@@ -2,11 +2,13 @@ FROM debian:stretch-slim
 
 LABEL version="0.0.1" \
     maintainer="NetherKids <docker@netherkids.de>"
-ARG USER="steam" \
-    GROUP="steam" \
-    UID="27015" \
-    GID="27015" \
-    ULIMIT="2048"
+
+ARG USER="steam"
+ARG GROUP="steam"
+ARG UID="27015"
+ARG GID="27015"
+ARG ULIMIT="2048"
+
 ENV STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8"
