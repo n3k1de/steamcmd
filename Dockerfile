@@ -1,23 +1,27 @@
 FROM debian:stretch-slim
-MAINTAINER NetherKids <docker@netherkids.de>
 
+LABEL version="0.0.1" \
+    maintainer="NetherKids <docker@netherkids.de>"
+ARG USER="steam" \
+    GROUP="steam" \
+    UID="27015" \
+    GID="27015" \
+    ULIMIT="2048"
 ENV STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8"
-
-COPY /healthcheck.py /
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 python3-requests && \
     rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
-    addgroup --gid 27015 steam && \
-    adduser --uid 27015 --ingroup steam --disabled-password --disabled-login --gecos "" steam && \
+    addgroup --gid "${GID}" steam && \
+    adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}" && \
     chmod 0775 /opt/ && chown steam.steam /opt/ && \
     su steam -c "mkdir -p ${STEAMCMDDIR} ~/.steam/sdk32/ && \
         cd ${STEAMCMDDIR} && \
         wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -" && \
-    ulimit -n 2048 && \
+    ulimit -n "${ULIMIT}" && \
     apt-get autoremove -y --purge wget && \
     apt-get clean  && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
