@@ -7,14 +7,13 @@ ARG USER="steam"
 ARG GROUP="steam"
 ARG UID="27015"
 ARG GID="27015"
-ARG ULIMIT="2048"
 
 ENV USER="${USER}" \
     GROUP="${GROUP}" \
     STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8" \
-    ULIMIT="${ULIMIT}"
+    ULIMIT="2048"
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get upgrade -y && \
