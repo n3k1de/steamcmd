@@ -1,7 +1,5 @@
 FROM debian:stretch-slim
-
-LABEL version="0.0.1" \
-    maintainer="NetherKids <docker@netherkids.de>"
+LABEL version="0.0.1" maintainer="NetherKids <docker@netherkids.de>"
 
 ARG USER="steam"
 ARG GROUP="steam"
