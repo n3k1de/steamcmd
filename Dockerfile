@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:stretch-20200803-slim
 LABEL version="0.2" maintainer="NetherKids <docker@netherkids.de>"
 
 ARG USER="steam"
@@ -13,10 +13,13 @@ ENV USER="${USER}" \
     LANG="en_US.utf8" \
     ULIMIT="2048"
 
-RUN dpkg --add-architecture i386 && \
-    apt-get update && apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends --no-install-suggests locales libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 python3-requests && \
-    rm -rf /var/lib/apt/lists/* && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+# 
+
+# && apt-get upgrade -y
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    dpkg --add-architecture i386 && \
+    apt-get install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 python3-requests && \
     addgroup --gid "${GID}" steam && \
     adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}" && \
     chmod 0775 /opt/ && chown steam.steam /opt/ && \
