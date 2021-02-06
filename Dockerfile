@@ -19,6 +19,7 @@ ENV USER="${USER}" \
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     dpkg --add-architecture i386 && \
+    apt-get update && \
     apt-get install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 wget curl ca-certificates gdb python3 python3-requests && \
     addgroup --gid "${GID}" steam && \
     adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}" && \
