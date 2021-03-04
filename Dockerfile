@@ -8,6 +8,8 @@ ARG GID="27015"
 
 ENV USER="${USER}" \
     GROUP="${GROUP}" \
+    UID="$UID" \
+    GID="$GID" \
     STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8" \
