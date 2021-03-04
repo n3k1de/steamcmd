@@ -3,13 +3,13 @@ LABEL version="0.2" maintainer="NetherKids <docker@netherkids.de>"
 
 ARG USER="steam"
 ARG GROUP="steam"
-ARG UID="27015"
-ARG GID="27015"
+ARG UID=27015
+ARG GID=27015
 
 ENV USER="${USER}" \
     GROUP="${GROUP}" \
-    UID="$UID" \
-    GID="$GID" \
+    UID=${UID} \
+    GID=${GID} \
     STEAMCMDDIR="/home/steam" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8" \
