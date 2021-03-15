@@ -11,19 +11,13 @@
 #### ubuntu
 * planned...
 
-#### CentOS
-* planned...
-
-#### ArchLinux
-* planned...
-
 ## Supported games 
 - [x] [Garry's Mod](https://hub.docker.com/r/netherkids/gmod)
+- [x] [ARK: Survival Evolved](https://hub.docker.com/r/netherkids/ark)
 ## planned games
 - [ ] [Counter-Strike: Source](https://hub.docker.com/r/netherkids/css)
 - [ ] [Counter-Strike: Global Offensive](https://hub.docker.com/r/netherkids/csgo)
 - [ ] [Eco](https://hub.docker.com/r/netherkids/eco)
-- [ ] [ARK: Survival Evolved](https://hub.docker.com/r/netherkids/ark)
 - [ ] [Arma 3](https://hub.docker.com/r/netherkids/arma3)
 - [ ] [Squad](https://hub.docker.com/r/netherkids/squad)
 - [ ] [Killing Floor 2](https://hub.docker.com/r/netherkids/kf2)
