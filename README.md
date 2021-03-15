@@ -7,8 +7,8 @@
 * ~~[`debian-10`, `debian-buster`](https://github.com/NetherKids/steamcmd/blob/master/debian/)~~
 
 #### ubuntu
-* ~~[`ubuntu-20.04`, `ubuntu-focal`, `ubuntu`](https://github.com/NetherKids/steamcmd/blob/master/ubuntu/)--
-* ~~[`ubuntu-20.10`, `ubuntu-groovy`](https://github.com/NetherKids/steamcmd/blob/master/ubuntu/)--
+* ~~[`ubuntu-20.04`, `ubuntu-focal`, `ubuntu`](https://github.com/NetherKids/steamcmd/blob/master/ubuntu/)~~
+* ~~[`ubuntu-20.10`, `ubuntu-groovy`](https://github.com/NetherKids/steamcmd/blob/master/ubuntu/)~~
 
 ## Supported games 
 - [x] [Garry's Mod](https://hub.docker.com/r/netherkids/gmod)
