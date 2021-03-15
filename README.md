@@ -3,13 +3,12 @@
 ## Version tags:
 
 #### debian
-* ~~[`debian-11`, `debian-bullseye`](https://github.com/NetherKids/steamcmd/blob/master/debian/11-bullseye/Dockerfile)~~
-* ~~[`debian-10`, `debian-buster`](https://github.com/NetherKids/steamcmd/blob/master/debian/10-buster/Dockerfile)~~
-* **[`debian-9`, `debian-stretch`, `latest`](https://github.com/NetherKids/steamcmd/blob/master/debian/9-stretch/Dockerfile)**
-* ~~[`debian-8`, `debian-jessie`](https://github.com/NetherKids/steamcmd/blob/master/debian/8-jessie/Dockerfile)~~
+* **[`debian-9`, `debian-stretch`, `debian`, `stable`, `unstable`, `latest`](https://github.com/NetherKids/steamcmd/blob/master/debian/stretch/)**
+* ~~[`debian-10`, `debian-buster`](https://github.com/NetherKids/steamcmd/blob/master/debian/)~~
 
 #### ubuntu
-* planned...
+* ~~[`ubuntu-20.04`, `ubuntu-focal`, `ubuntu`](https://github.com/NetherKids/steamcmd/blob/master/ubuntu/)--
+* ~~[`ubuntu-20.10`, `ubuntu-groovy`](https://github.com/NetherKids/steamcmd/blob/master/ubuntu/)--
 
 ## Supported games 
 - [x] [Garry's Mod](https://hub.docker.com/r/netherkids/gmod)
