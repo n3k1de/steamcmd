@@ -17,8 +17,8 @@ ENV USER="${USER}" \
 
 RUN apk add --no-cache ca-certificates libstdc++ su-exec libpq
 RUN set -eux; \
-    addgroup -g 9987 ts3server; \
-    adduser -u 9987 -Hh /var/ts3server -G ts3server -s /sbin/nologin -D ts3server; \
+    addgroup -g ${GID} ${GROUP}; \
+    adduser -u ${UID} -Hh /var/${USER} -G ${GROUP} -s /sbin/nologin -D ${USER}; \
     install -d -o ts3server -g ts3server -m 775 /var/ts3server /var/run/ts3server /opt/ts3server
 
 # && apt-get upgrade -y
