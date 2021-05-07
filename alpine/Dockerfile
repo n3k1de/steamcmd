@@ -1,4 +1,4 @@
-FROM debian:stretch-20200803-slim
+FROM alpine:3.10
 LABEL version="0.2" maintainer="NetherKids <docker@netherkids.de>"
 
 ARG USER="steam"
