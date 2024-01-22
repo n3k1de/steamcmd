@@ -23,8 +23,17 @@ RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
     dpkg-reconfigure --frontend=noninteractive locales
 RUN dpkg --add-architecture i386
 RUN apt-get update
-RUN apt install -y --no-install-recommends --no-install-suggests wget curl ca-certificates gdb python3 python3-requests software-properties-common
-RUN apt install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
+RUN apt install -y --no-install-recommends --no-install-suggests \
+        wget \
+        curl \
+        ca-certificates \
+        gdb \
+        python3 python3-requests \
+        software-properties-common
+# RUN apt install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32ncurses5
+RUN apt install -y --no-install-recommends --no-install-suggests \
+        lib32stdc++6=10.2.1-6 \
+		lib32gcc-s1=10.2.1-6 \
 RUN addgroup --gid "${GID}" steam && \
     adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}" && \
     chmod 0775 /opt/ && chown steam.steam /opt/
