@@ -18,10 +18,9 @@ ENV USER="${USER}" \
 RUN addgroup --gid "${GID}" steam && \
     adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}"
 RUN ulimit -n "${ULIMIT}"
-RUN add-apt-repository multiverse && dpkg --add-architecture i386 && apt update && apt update -y 
-RUN chmod 0775 /opt/ && chown ${USER}.${GROUP} /opt/ && \
-    su steam -c "mkdir -p ${STEAMCMDDIR} ~/.steam/sdk32/ && cd ${STEAMCMDDIR} && wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
-RUN apt-get autoremove -y --purge wget && \
+RUN add-apt-repository multiverse && dpkg --add-architecture i386
+RUN apt update && apt install steamcmd
+RUN apt-get autoremove -y && \
     apt-get clean  && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
