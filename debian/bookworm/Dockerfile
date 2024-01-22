@@ -18,9 +18,10 @@ ENV USER="${USER}" \
 # 
 
 # && apt-get upgrade -y
-RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* && \
-    localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-RUN dpkg --add-architecture i386 && apt-add-repository non-free
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/*
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+    dpkg-reconfigure --frontend=noninteractive locales
+RUN dpkg --add-architecture i386
 RUN apt-get update
 RUN apt install -y --no-install-recommends --no-install-suggests wget curl ca-certificates gdb python3 python3-requests software-properties-common
 RUN apt install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5
