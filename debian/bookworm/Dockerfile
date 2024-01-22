@@ -1,4 +1,4 @@
-FROM i386/debian:bookworm-20240110
+FROM debian:bookworm-20240110
 LABEL version="0.2" maintainer="NetherKids <docker@netherkids.de>"
 
 ARG USER="steam"
