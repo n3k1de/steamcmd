@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y locales
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     dpkg-reconfigure --frontend=noninteractive locales
 RUN dpkg --add-architecture i386
+RUN apt-add-repository --component non-free
 RUN apt-get update
 RUN apt install -y --no-install-recommends --no-install-suggests \
         wget \
@@ -31,6 +32,7 @@ RUN apt install -y --no-install-recommends --no-install-suggests \
         python3 python3-requests \
         software-properties-common
 # RUN apt install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32ncurses5
+RUN apt install -y --no-install-recommends --no-install-suggests steamcmd
 RUN apt install -y --no-install-recommends --no-install-suggests \
         lib32stdc++6=10.2.1-6 \
 	lib32gcc-s1=10.2.1-6
