@@ -33,7 +33,7 @@ RUN apt install -y --no-install-recommends --no-install-suggests \
 # RUN apt install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32ncurses5
 RUN apt install -y --no-install-recommends --no-install-suggests \
         lib32stdc++6=10.2.1-6 \
-		lib32gcc-s1=10.2.1-6 \
+	lib32gcc-s1=10.2.1-6
 RUN addgroup --gid "${GID}" steam && \
     adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}" && \
     chmod 0775 /opt/ && chown steam.steam /opt/
