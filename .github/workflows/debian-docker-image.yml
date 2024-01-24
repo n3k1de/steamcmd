@@ -44,3 +44,16 @@ jobs:
             ${{ github.repository }}:debian-${{ steps.vars.outputs.date_info }}
             ${{ github.repository }}:debian-bookworm
             ${{ github.repository }}:debian-bookworm-${{ steps.vars.outputs.date_info }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: ./debian/bookworm
+          file: ./debian/bookworm/Dockerfile
+          push: true
+          tags: |
+            ${{ github.repository }}:latest
+            ${{ github.repository }}:debian
+            ${{ github.repository }}:debian-${{ steps.vars.outputs.date_info }}
+            ${{ github.repository }}:debian-bookworm
+            ${{ github.repository }}:debian-bookworm-${{ steps.vars.outputs.date_info }}
