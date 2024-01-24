@@ -52,7 +52,6 @@ jobs:
           file: ./debian/bookworm/Dockerfile
           push: true
           tags: |
-            ${{ github.repository }}:latest
             ${{ github.repository }}:ubuntu
             ${{ github.repository }}:ubuntu-${{ steps.vars.outputs.date_info }}
             ${{ github.repository }}:ubuntu-jammy
