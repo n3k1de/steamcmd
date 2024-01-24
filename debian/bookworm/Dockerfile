@@ -1,5 +1,5 @@
 FROM debian:bookworm-20240110
-LABEL version="0.2" maintainer="NetherKids <docker@netherkids.de>"
+LABEL version="0.3" maintainer="NetherKids <docker@netherkids.de>"
 
 ARG USER="steam"
 ARG GROUP="steam"
@@ -14,8 +14,6 @@ ENV USER="${USER}" \
     SERVERDIR="/opt/server" \
     LANG="en_US.utf8" \
     ULIMIT="2048"
-
-# 
 
 # && apt-get upgrade -y
 RUN apt update && apt install -y --no-install-recommends --no-install-suggests locales software-properties-common
@@ -32,12 +30,20 @@ RUN apt install -y --no-install-recommends --no-install-suggests \
         python3 python3-requests
 # RUN apt install -y --no-install-recommends --no-install-suggests libstdc++6 libc6-i386 lib32ncurses5
 RUN apt install -y --no-install-recommends --no-install-suggests \
-        lib32stdc++6=10.2.1-6 \
-	lib32gcc-s1=10.2.1-6
+        lib32stdc++6=12.2.0-14 \
+        lib32gcc-s1=12.2.0-14
 RUN addgroup --gid "${GID}" steam && \
-    adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --disabled-login --gecos "" "${USER}" && \
+    adduser --uid "${UID}" --ingroup "${GROUP}" --disabled-password --gecos "" "${USER}" && \
     chmod 0775 /opt/ && chown steam.steam /opt/
-RUN su steam -c "mkdir -p ${STEAMCMDDIR} ~/.steam/sdk32/ && cd ${STEAMCMDDIR} && wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf -"
+
+RUN mkdir -p -m 0755 ${STEAMCMDDIR} && chown "${USER}" ${STEAMCMDDIR}
+
+RUN su "${USER}" -c "curl -fsSL 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar xvzf - -C ${STEAMCMDDIR}"
+RUN su "${USER}" -c "${STEAMCMDDIR}/steamcmd.sh +quit"
+RUN su "${USER}" -c "ln -s ${STEAMCMDDIR}/linux32/steamclient.so ${STEAMCMDDIR}/steamservice.so"
+RUN su "${USER}" -c "mkdir -p ~/.steam/sdk32 && ln -s ${STEAMCMDDIR}/linux32/steamclient.so ~/.steam/sdk32/steamclient.so"
+RUN su "${USER}" -c "mkdir -p ~/.steam/sdk64 && ln -s ${STEAMCMDDIR}/linux64/steamclient.so ~/.steam/sdk64/steamclient.so"
+
 RUN ulimit -n "${ULIMIT}"
 RUN apt-get autoremove -y --purge wget && \
     apt-get clean  && \
