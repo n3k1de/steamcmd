@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Debian Image CI
 
 on:
   push:
