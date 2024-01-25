@@ -7,7 +7,7 @@ on:
     types: [ published ]
 
 jobs:
-  build_and_push_debian:
+  build_and_push_debian_docker:
     name: Build Debian Image
     runs-on: ubuntu-latest
     steps:
@@ -44,22 +44,9 @@ jobs:
             ${{ github.repository }}:debian-${{ steps.vars.outputs.date_info }}
             ${{ github.repository }}:debian-bookworm
             ${{ github.repository }}:debian-bookworm-${{ steps.vars.outputs.date_info }}
-      
-      - name: Build and push Docker image
-        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
-        with:
-          context: ./debian/bookworm
-          file: ./debian/bookworm/Dockerfile
-          push: true
-          tags: |
-            ${{ github.repository }}:latest
-            ${{ github.repository }}:debian
-            ${{ github.repository }}:debian-${{ steps.vars.outputs.date_info }}
-            ${{ github.repository }}:debian-bookworm
-            ${{ github.repository }}:debian-bookworm-${{ steps.vars.outputs.date_info }}
   
-  build_and_push_ubuntu:
-    name: Build Ubuntu Image
+  build_and_push_ubuntu_docker:
+    name: Build Ubuntu Image (hub.docker)
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -77,33 +64,80 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
-        with:
-          images: my-docker-hub-namespace/my-docker-hub-repository
-      
       - name: Build and push Docker image
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
-          context: ./debian/bookworm
-          file: ./debian/bookworm/Dockerfile
-          push: true
-          tags: |
-            ${{ github.repository }}:latest
-            ${{ github.repository }}:debian
-            ${{ github.repository }}:debian-${{ steps.vars.outputs.date_info }}
-            ${{ github.repository }}:debian-bookworm
-            ${{ github.repository }}:debian-bookworm-${{ steps.vars.outputs.date_info }}
-      
-      - name: Build and push Docker image
-        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
-        with:
-          context: ./debian/bookworm
-          file: ./debian/bookworm/Dockerfile
+          context: ./ubuntu/jammy
+          file: ./ubuntu/jammy/Dockerfile
           push: true
           tags: |
             ${{ github.repository }}:ubuntu
             ${{ github.repository }}:ubuntu-${{ steps.vars.outputs.date_info }}
             ${{ github.repository }}:ubuntu-jammy
             ${{ github.repository }}:ubuntu-jammy-${{ steps.vars.outputs.date_info }}
+
+
+  build_and_push_debian_github:
+    name: Build Debian Image (ghcr)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set sha_short
+        id: vars
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "date_info=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: ./debian/bookworm
+          file: ./debian/bookworm/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:debian
+            ghcr.io/${{ github.repository }}:debian-${{ steps.vars.outputs.date_info }}
+            ghcr.io/${{ github.repository }}:debian-bookworm
+            ghcr.io/${{ github.repository }}:debian-bookworm-${{ steps.vars.outputs.date_info }}
+  
+  build_and_push_ubuntu_github:
+    name: Build Ubuntu Image (ghcr)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set sha_short
+        id: vars
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "date_info=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
+      
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: ./ubuntu/jammy
+          file: ./ubuntu/jammy/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:ubuntu
+            ghcr.io/${{ github.repository }}:ubuntu-${{ steps.vars.outputs.date_info }}
+            ghcr.io/${{ github.repository }}:ubuntu-jammy
+            ghcr.io/${{ github.repository }}:ubuntu-jammy-${{ steps.vars.outputs.date_info }}
